@@ -18,5 +18,5 @@ credits:
 this article helped me set up the lab
 https://medium.com/@jmwanderer/fun-with-routing-protocols-8a0677aab2fc
 
-made for CSE4400-Network Security by Professor Amir Herzberg
+made for CSE4402-Network Security by Professor Amir Herzberg for my Fall 2025 semester
 targetRIBtables.png was made using https://bgpsimulator.com/
