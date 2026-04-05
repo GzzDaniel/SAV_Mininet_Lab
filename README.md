@@ -1,22 +1,127 @@
-# SAV_Mininet_Lab
+# 🛡️ Source Address Validation Lab (Mininet + FRR)
 
-Lab to test Source Address Validation methods using mininet emulation and FRR open source routing
-strict and loose are provided by the linux OS
-use vtysh to access routing console
+A hands-on lab for experimenting with **Source Address Validation (SAV)** techniques using:
 
-the router configuration can be found in the rn folders where n is the number of the router.
-the routers are configured for bgp where r3 can be easily set to prefer routing to r2 or r4.
+- 🧪 Mininet (network emulation)
+- 🧭 FRRouting (FRR)
+- 🐧 Linux kernel features (rp_filter)
 
-- quick demo -
-run config_frr.sh to install the router configurations in each namespace
+---
 
-use packetsend.py to send a spoofed packet from d3 to d1
-sav loose might be enabled in some network components by os default
+## 📌 Overview
 
-credits:
+This lab demonstrates how different SAV methods behave in a simulated network environment.
 
-this article helped me set up the lab
-https://medium.com/@jmwanderer/fun-with-routing-protocols-8a0677aab2fc
+- **Strict mode** and **Loose mode** are implemented by the Linux OS
+- Routing is handled using **BGP via FRR**
+- Use `vtysh` to access router configurations
 
-made for CSE4402-Network Security by Professor Amir Herzberg for my Fall 2025 semester
-targetRIBtables.png was made using https://bgpsimulator.com/
+Each router is preconfigured and organized into folders:
+
+```
+r1/
+r2/
+r3/
+r4/
+...
+```
+
+Router **r3** can be modified to prefer routing via:
+- `r2` or
+- `r4`
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Configure routers
+
+Run the setup script to load FRR configs into each namespace:
+
+```bash
+./config_frr.sh
+```
+
+---
+
+### 2. Access router CLI
+
+Use:
+
+```bash
+vtysh
+```
+
+Or per namespace:
+
+```bash
+vtysh -N r1
+```
+
+---
+
+## 🚀 Quick Demo
+
+### Send spoofed packet and read received contents
+
+From host `d3`, run:
+
+```bash
+d1 tcpdump -nn -i d1-eth0 -w /home/ubuntu/bgp/d1_capture.pcap &
+sudo ./packetsend.py
+d1 pkill -INT tcpdump
+d1 tcpdump -nn -XX -r d1_capture.pcap
+```
+
+This sends a ** packet** to `d1`.
+
+---
+
+## ⚠️ Notes
+
+- Some nodes may already have **loose SAV enabled by default** via Linux kernel settings
+- Behavior may vary depending on `rp_filter` configuration
+
+---
+
+## 🧠 Concepts Tested
+
+- Source Address Validation (SAV)
+- Strict vs Loose filtering
+- BGP route selection impact on SAV
+- Spoofed packet detection
+
+---
+
+## 📁 Project Structure
+
+```
+.
+├── config_frr.sh        # Loads router configs
+├── packetsend.py       # Sends spoofed packets
+├── r1/                 # Router configs
+├── r2/
+├── r3/
+├── r4/
+└── targetRIBtables.png # Routing visualization
+```
+
+---
+
+## 🙏 Credits
+
+- Setup inspiration from:  
+  https://medium.com/@jmwanderer/fun-with-routing-protocols-8a0677aab2fc
+
+- RIB visualization created with:  
+  https://bgpsimulator.com/
+
+---
+
+## 🎓 Academic Context
+
+Created for:
+
+**CSE4402 – Network Security**  
+Professor Amir Herzberg  
+Fall 2025
