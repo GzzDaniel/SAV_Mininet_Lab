@@ -14,7 +14,7 @@ def main():
     payload = "HELLO FROM D3"
     
     packet = (
-    IP(src= d3address, dst=d1address) /
+    IP(src= notInTopology, dst=d1address) /
     UDP(sport=4444, dport=9999) /
     Raw(load=payload)
     )

@@ -34,6 +34,8 @@ Router **r3** can be modified to prefer routing via:
 
 ## ⚙️ Setup Instructions
 
+This lab is to be used in a virtual machine with mininet. a virtual machine can be found in the following link https://medium.com/@jmwanderer/fun-with-routing-protocols-8a0677aab2fc
+
 ### 1. Configure routers
 
 Run the setup script to load FRR configs into each namespace:
