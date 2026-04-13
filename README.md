@@ -81,7 +81,7 @@ This sends a ** packet** to `d1`.
 
 ## ⚠️ Notes
 
-- Some nodes may already have **loose SAV enabled by default** via Linux kernel settings
+- Some nodes may already have **loose urpf enabled by default** via Linux kernel settings
 - Behavior may vary depending on `rp_filter` configuration
 
 ---

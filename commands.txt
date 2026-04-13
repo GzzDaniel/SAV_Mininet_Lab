@@ -14,9 +14,6 @@ d1 pkill -INT tcpdump
 ## echo capture hexdump
 d1 tcpdump -nn -XX -r d1_capture.pcap
 
-## capture summary
-d1 tcpdump -nn -r d1_capture.pcap
-
 
 #### d1 sends to d4
 ## start capture in the background
@@ -38,29 +35,44 @@ d4 tcpdump -nn -r d4_capture.pcap
 
 #### DISABLE urpf ##############
 
-r1 sysctl -w net.ipv4.conf.all.rp_filter=0
-r1 sysctl -w net.ipv4.conf.default.rp_filter=0
-r1 sysctl -w net.ipv4.conf.r1-eth1.rp_filter=0
-r1 sysctl -w net.ipv4.conf.r1-eth2.rp_filter=0
+r1 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.r1-eth1.rp_filter=0 net.ipv4.conf.r1-eth2.rp_filter=0 net.ipv4.conf.r1-eth3.rp_filter=0
 
-r1 sysctl -w net.ipv4.conf.all.rp_filter=0 ; sysctl -w net.ipv4.conf.default.rp_filter=0 ; sysctl -w net.ipv4.conf.lo.rp_filter=0 ; sysctl -w net.ipv4.conf.r1-eth1.rp_filter=0 ; sysctl -w net.ipv4.conf.r1-eth2.rp_filter=0 ; sysctl -w net.ipv4.conf.r1-eth3.rp_filter=0
+r2 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.r2-eth1.rp_filter=0 net.ipv4.conf.r2-eth2.rp_filter=0 net.ipv4.conf.r2-eth3.rp_filter=0
 
+r3 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.r3-eth1.rp_filter=0 net.ipv4.conf.r3-eth2.rp_filter=0 net.ipv4.conf.r3-eth3.rp_filter=0
 
-r2 sysctl -w net.ipv4.conf.all.rp_filter=0 ; sysctl -w net.ipv4.conf.default.rp_filter=0 ; sysctl -w net.ipv4.conf.r2-eth1.rp_filter=0 ; sysctl -w net.ipv4.conf.r2-eth2.rp_filter=0
+r4 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.r4-eth1.rp_filter=0 net.ipv4.conf.r4-eth2.rp_filter=0 net.ipv4.conf.r4-eth3.rp_filter=0
 
-r3 sysctl -w net.ipv4.conf.all.rp_filter=0 ; sysctl -w net.ipv4.conf.default.rp_filter=0 ; sysctl -w net.ipv4.conf.r3-eth1.rp_filter=0 ; sysctl -w net.ipv4.conf.r3-eth2.rp_filter=0
+r5 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.r5-eth1.rp_filter=0 net.ipv4.conf.r5-eth2.rp_filter=0
+
+d1 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.d1-eth0.rp_filter=0
+
+d3 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.d3-eth0.rp_filter=0
+
+d4 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.d4-eth0.rp_filter=0
+
+d5 sysctl -w net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.d5-eth0.rp_filter=0
 
 
 #### VERIFY#####################
 
-r1 sysctl net.ipv4.conf.r1-eth1.rp_filter ; sysctl net.ipv4.conf.r1-eth2.rp_filter ; sysctl net.ipv4.conf.all.rp_filter
+r1 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.r1-eth1.rp_filter net.ipv4.conf.r1-eth2.rp_filter net.ipv4.conf.r1-eth3.rp_filter
 
-r2 sysctl net.ipv4.conf.r2-eth1.rp_filter ; sysctl net.ipv4.conf.r2-eth2.rp_filter ; sysctl net.ipv4.conf.all.rp_filter
+r2 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.r2-eth1.rp_filter net.ipv4.conf.r2-eth2.rp_filter net.ipv4.conf.r2-eth3.rp_filter
 
-r3 sysctl net.ipv4.conf.r3-eth1.rp_filter ; sysctl net.ipv4.conf.r3-eth2.rp_filter ; sysctl net.ipv4.conf.all.rp_filter
+r3 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.r3-eth1.rp_filter net.ipv4.conf.r3-eth2.rp_filter net.ipv4.conf.r3-eth3.rp_filter
 
-d1 sysctl net.ipv4.conf.d1-eth1.rp_filter ; sysctl net.ipv4.conf.d1-eth0.rp_filter ; sysctl net.ipv4.conf.all.rp_filter
+r4 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.r4-eth1.rp_filter net.ipv4.conf.r4-eth2.rp_filter net.ipv4.conf.r4-eth3.rp_filter
 
+r5 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.r5-eth1.rp_filter net.ipv4.conf.r5-eth2.rp_filter
+
+d1 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.d1-eth0.rp_filter
+
+d3 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.d3-eth0.rp_filter
+
+d4 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.d4-eth0.rp_filter
+
+d5 sysctl net.ipv4.conf.all.rp_filter net.ipv4.conf.default.rp_filter net.ipv4.conf.d5-eth0.rp_filter
 
 ####### ACTIVATE LOOSE on r1 ###############
 
@@ -73,7 +85,7 @@ r1 sysctl -w net.ipv4.conf.all.rp_filter=1 ; sysctl -w net.ipv4.conf.default.rp_
 
 
 
-vtysh commands
+####### vtysh commands #########
 
 sudo vtysh -N r1
 sudo vtysh -N r1 -c "show ip bgp"   shows RIB table, helpful to check if connections worked
@@ -83,3 +95,10 @@ show ip bgp
 show ip bgp summary
 show running-config
 show interfaces
+
+
+######## running custom modules ######
+r1 iptables -A FORWARD -j NFQUEUE --queue-num 1
+r1 iptables -A INPUT -j NFQUEUE --queue-num 1
+r1 python3 module.py &
+r1 pkill -f module.py
