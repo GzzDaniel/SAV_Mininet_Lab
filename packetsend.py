@@ -7,14 +7,14 @@ def main():
     d1address = "10.100.0.251"
     d3address = "10.101.0.251"
     d5address = "10.105.0.251"
-  
+    r2address = "10.1.0.0"
     notInTopology = "10.5.0.2"
     
     # writing a message helps confirm the packet received was this script
     payload = "HELLO FROM D3"
     
     packet = (
-    IP(src= notInTopology, dst=d1address) /
+    IP(src= r2address, dst=d1address) /
     UDP(sport=4444, dport=9999) /
     Raw(load=payload)
     )
