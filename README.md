@@ -1,14 +1,14 @@
-# 🛡️ Source Address Validation Lab (Mininet + FRR)
+# Source Address Validation Lab (Mininet + FRR)
 
 A hands-on lab for experimenting with **Source Address Validation (SAV)** techniques using:
 
-- 🧪 Mininet (network emulation)
-- 🧭 FRRouting (FRR)
-- 🐧 Linux kernel features (rp_filter)
+-  Mininet (network emulation)
+-  FRRouting (FRR)
+-  Linux kernel features (rp_filter)
 
 ---
 
-## 📌 Overview
+##  Overview
 
 This lab demonstrates how different SAV methods behave in a simulated network environment.
 
@@ -32,7 +32,7 @@ Router **r3** can be modified to prefer routing via:
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 This lab is to be used in a virtual machine with mininet. a virtual machine can be found in the following link https://medium.com/@jmwanderer/fun-with-routing-protocols-8a0677aab2fc
 
@@ -62,7 +62,7 @@ vtysh -N r1
 
 ---
 
-## 🚀 Quick Demo
+##  Quick Demo
 
 ### Send spoofed packet and read received contents
 
@@ -79,14 +79,14 @@ This sends a ** packet** to `d1`.
 
 ---
 
-## ⚠️ Notes
+##  Notes
 
 - Some nodes may already have **loose urpf enabled by default** via Linux kernel settings
 - Behavior may vary depending on `rp_filter` configuration
 
 ---
 
-## 🧠 Concepts Tested
+##  Concepts Tested
 
 - Source Address Validation (SAV)
 - Strict vs Loose filtering
@@ -95,7 +95,7 @@ This sends a ** packet** to `d1`.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 .
@@ -110,7 +110,7 @@ This sends a ** packet** to `d1`.
 
 ---
 
-## 🙏 Credits
+##  Credits
 
 - Setup inspiration from:  
   https://medium.com/@jmwanderer/fun-with-routing-protocols-8a0677aab2fc
@@ -120,7 +120,7 @@ This sends a ** packet** to `d1`.
 
 ---
 
-## 🎓 Academic Context
+##  Academic Context
 
 Created for:
 
